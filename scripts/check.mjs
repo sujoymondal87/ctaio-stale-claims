@@ -97,6 +97,7 @@ const parse = (v) => {
 function classify(declared, latest) {
   const d = parse(declared), l = parse(latest);
   if (!d || !l) return "unknown";
+  if (d.join(".") === l.join(".")) return "exact";
   const cmp = (a, b) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2];
   if (cmp(d, l) > 0) return "ahead"; // claim newer than registry: typo or prerelease
   if (d[0] !== l[0]) return "stale";
@@ -160,7 +161,7 @@ for (const post of posts) {
   }
 }
 
-const RANK = { stale: 0, ahead: 1, drifting: 2, unknown: 3, unverifiable: 4, fresh: 5 };
+const RANK = { stale: 0, ahead: 1, drifting: 2, unknown: 3, unverifiable: 4, fresh: 5, exact: 6 };
 for (const p of posts) {
   p.claims.sort((a, b) => RANK[a.status] - RANK[b.status]);
   p.worst = p.claims[0]?.status ?? "fresh";
@@ -210,13 +211,14 @@ function diffVersion(declared, latest) {
 
 function render({ generatedAt, totals, posts }) {
   const LABEL = {
-    stale: "Stale", drifting: "Drifting", fresh: "Current",
+    stale: "Stale", drifting: "Drifting", fresh: "Current", exact: "Current",
     unverifiable: "Can't verify", unknown: "Lookup failed", ahead: "Newer than registry",
   };
   const EXPLAIN = {
     stale: "A breaking release has shipped since this was written.",
     drifting: "New features shipped that the post doesn't cover.",
     fresh: "Only patch releases since.",
+    exact: "Matches the latest release.",
     ahead: "Claimed version isn't published. Check for a typo.",
   };
   const staleCount = totals.stale;
@@ -272,7 +274,7 @@ function render({ generatedAt, totals, posts }) {
   .post { border-left: 4px solid var(--rule); padding: 4px 0 4px 20px; margin: 0 0 44px; }
   .post.w-stale { border-color: var(--stale); }
   .post.w-drifting, .post.w-ahead { border-color: var(--drift); }
-  .post.w-fresh { border-color: var(--fresh); }
+  .post.w-fresh, .post.w-exact { border-color: var(--fresh); }
   h2 { font-size: 21px; line-height: 1.3; margin: 0 0 4px; font-weight: 600; }
   .meta { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
   .scroll { overflow-x: auto; }
@@ -288,7 +290,7 @@ function render({ generatedAt, totals, posts }) {
   .status span { display: block; color: var(--muted); font-size: 13.5px; max-width: 30ch; }
   .s-stale .status strong, .s-stale mark { color: var(--stale); }
   .s-drifting .status strong, .s-drifting mark, .s-ahead .status strong { color: var(--drift); }
-  .s-fresh .status strong { color: var(--fresh); }
+  .s-fresh .status strong, .s-exact .status strong { color: var(--fresh); }
   .s-unverifiable .status strong, .s-unknown .status strong { color: var(--flat); }
   .empty { color: var(--muted); }
   footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 14px; max-width: 70ch; }
@@ -304,7 +306,7 @@ function render({ generatedAt, totals, posts }) {
   <ul class="tally">
     <li><b>${totals.stale}</b> stale</li>
     <li><b>${totals.drifting}</b> drifting</li>
-    <li><b>${totals.fresh}</b> current</li>
+    <li><b>${totals.fresh + totals.exact}</b> current</li>
     <li><b>${totals.unverifiable + totals.unknown + totals.ahead}</b> need a manual check</li>
   </ul>
   ${sections}
