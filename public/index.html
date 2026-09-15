@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Version claims check | ctaio.dev</title>
+<meta name="description" content="Which ctaio.dev posts cite tool versions that have moved on.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F6F7F9; --ink: #1F2533; --muted: #5E6778; --rule: #D8DCE3;
+    --stale: #B42318; --drift: #8A5300; --fresh: #2F6B3E; --flat: #5E6778;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink);
+    font: 16px/1.55 "IBM Plex Sans", system-ui, sans-serif; }
+  main { max-width: 980px; margin: 0 auto; padding: 56px 24px 80px; }
+  .kicker { color: var(--muted); margin: 0 0 12px; }
+  h1 { font-size: clamp(28px, 4.2vw, 42px); line-height: 1.15; font-weight: 600;
+    max-width: 22ch; margin: 0 0 20px; letter-spacing: -0.01em; }
+  .lede { max-width: 64ch; color: var(--muted); margin: 0 0 12px; }
+  .tally { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 28px 0 48px; padding: 0; list-style: none; }
+  .tally li { font-variant-numeric: tabular-nums; }
+  .tally b { font-weight: 600; }
+  .post { border-left: 4px solid var(--rule); padding: 4px 0 4px 20px; margin: 0 0 44px; }
+  .post.w-stale { border-color: var(--stale); }
+  .post.w-drifting, .post.w-ahead { border-color: var(--drift); }
+  .post.w-fresh { border-color: var(--fresh); }
+  h2 { font-size: 21px; line-height: 1.3; margin: 0 0 4px; font-weight: 600; }
+  .meta { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+  .scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 640px; }
+  th { text-align: left; font-weight: 600; font-size: 13px; color: var(--muted);
+    border-bottom: 1px solid var(--rule); padding: 6px 12px 6px 0; }
+  td { vertical-align: top; border-bottom: 1px solid var(--rule); padding: 10px 12px 10px 0; }
+  code { font: 14px/1.4 "IBM Plex Mono", ui-monospace, monospace; }
+  .tool code { display: block; color: var(--muted); font-size: 12.5px; }
+  .ver { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  mark { background: none; color: inherit; font-weight: 600; text-decoration: underline 2px; text-underline-offset: 3px; }
+  .status strong { display: block; font-weight: 600; }
+  .status span { display: block; color: var(--muted); font-size: 13.5px; max-width: 30ch; }
+  .s-stale .status strong, .s-stale mark { color: var(--stale); }
+  .s-drifting .status strong, .s-drifting mark, .s-ahead .status strong { color: var(--drift); }
+  .s-fresh .status strong { color: var(--fresh); }
+  .s-unverifiable .status strong, .s-unknown .status strong { color: var(--flat); }
+  .empty { color: var(--muted); }
+  footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 14px; max-width: 70ch; }
+  a { color: var(--ink); }
+  a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<main>
+  <p class="kicker">ctaio.dev editorial check, run Tue, 15 Sep 2026 11:10:38 GMT</p>
+  <h1>2 of 4 posts tell readers to use a version that has since had a breaking release.</h1>
+  <p class="lede">Each post declares the tool versions it was tested with, and pinned install commands are read from the body. Every claim is checked against npm and PyPI at build time.</p>
+  <ul class="tally">
+    <li><b>3</b> stale</li>
+    <li><b>1</b> drifting</li>
+    <li><b>8</b> current</li>
+    <li><b>1</b> need a manual check</li>
+  </ul>
+  
+    <section class="post w-stale">
+      <h2>Aider vs Claude Code on a 10-year-old PHP codebase</h2>
+      <p class="meta">posts/aider-vs-claude-code-legacy-php.md, published 2026-08-20</p>
+      <div class="scroll"><table>
+        <thead><tr><th>Tool</th><th>Where</th><th>Post says</th><th>Latest</th><th>Status</th></tr></thead>
+        <tbody>
+      <tr class="s-stale">
+        <td class="tool">Aider<code>aider-chat</code></td>
+        <td class="where">Install command, line 13</td>
+        <td class="ver"><code>0.84.0</code></td>
+        <td class="ver"><code>0.<mark>86</mark>.<mark>2</mark></code></td>
+        <td class="status"><strong>Stale</strong><span>Contradicts the post&#39;s frontmatter (0.86.1).</span></td>
+      </tr>
+      <tr class="s-unverifiable">
+        <td class="tool">Cursor</td>
+        <td class="where">Frontmatter</td>
+        <td class="ver"><code>1.7</code></td>
+        <td class="ver">&ndash;</td>
+        <td class="status"><strong>Can't verify</strong><span>No public release registry. Check the Cursor changelog by hand.</span></td>
+      </tr>
+      <tr class="s-fresh">
+        <td class="tool">Aider<code>aider-chat</code></td>
+        <td class="where">Frontmatter</td>
+        <td class="ver"><code>0.86.1</code></td>
+        <td class="ver"><code>0.86.<mark>2</mark></code></td>
+        <td class="status"><strong>Current</strong><span>Only patch releases since.</span></td>
+      </tr>
+      <tr class="s-fresh">
+        <td class="tool">Claude Code<code>@anthropic-ai/claude-code</code></td>
+        <td class="where">Frontmatter</td>
+        <td class="ver"><code>2.1.200</code></td>
+        <td class="ver"><code>2.1.<mark>272</mark></code></td>
+        <td class="status"><strong>Current</strong><span>Only patch releases since.</span></td>
+      </tr></tbody></table></div>
+    </section>
+    <section class="post w-stale">
+      <h2>Running parallel Claude Code sessions with git worktrees</h2>
+      <p class="meta">posts/parallel-sessions-worktrees.md, published 2026-02-11</p>
+      <div class="scroll"><table>
+        <thead><tr><th>Tool</th><th>Where</th><th>Post says</th><th>Latest</th><th>Status</th></tr></thead>
+        <tbody>
+      <tr class="s-stale">
+        <td class="tool">Claude Code<code>@anthropic-ai/claude-code</code></td>
+        <td class="where">Frontmatter</td>
+        <td class="ver"><code>1.0.88</code></td>
+        <td class="ver"><code><mark>2</mark>.<mark>1</mark>.<mark>272</mark></code></td>
+        <td class="status"><strong>Stale</strong><span>A breaking release has shipped since this was written.</span></td>
+      </tr>
+      <tr class="s-stale">
+        <td class="tool">Claude Code<code>@anthropic-ai/claude-code</code></td>
+        <td class="where">Install command, line 11</td>
+        <td class="ver"><code>1.0.88</code></td>
+        <td class="ver"><code><mark>2</mark>.<mark>1</mark>.<mark>272</mark></code></td>
+        <td class="status"><strong>Stale</strong><span>A breaking release has shipped since this was written.</span></td>
+      </tr></tbody></table></div>
+    </section>
+    <section class="post w-drifting">
+      <h2>A PR review bot on the Claude Agent SDK in 200 lines</h2>
+      <p class="meta">posts/review-bot-agent-sdk.md, published 2026-06-02</p>
+      <div class="scroll"><table>
+        <thead><tr><th>Tool</th><th>Where</th><th>Post says</th><th>Latest</th><th>Status</th></tr></thead>
+        <tbody>
+      <tr class="s-drifting">
+        <td class="tool">Anthropic SDK (Python)<code>anthropic</code></td>
+        <td class="where">Frontmatter</td>
+        <td class="ver"><code>1.2.0</code></td>
+        <td class="ver"><code>1.<mark>5</mark>.<mark>0</mark></code></td>
+        <td class="status"><strong>Drifting</strong><span>New features shipped that the post doesn&#39;t cover.</span></td>
+      </tr>
+      <tr class="s-fresh">
+        <td class="tool">Claude Agent SDK (Python)<code>claude-agent-sdk</code></td>
+        <td class="where">Frontmatter</td>
+        <td class="ver"><code>0.2.140</code></td>
+        <td class="ver"><code>0.2.<mark>152</mark></code></td>
+        <td class="status"><strong>Current</strong><span>Only patch releases since.</span></td>
+      </tr>
+      <tr class="s-fresh">
+        <td class="tool">Claude Agent SDK (Python)<code>claude-agent-sdk</code></td>
+        <td class="where">Install command, line 10</td>
+        <td class="ver"><code>0.2.140</code></td>
+        <td class="ver"><code>0.2.<mark>152</mark></code></td>
+        <td class="status"><strong>Current</strong><span>Only patch releases since.</span></td>
+      </tr></tbody></table></div>
+    </section>
+    <section class="post w-fresh">
+      <h2>Agent handoffs in the OpenAI Agents SDK, tested in Python and TS</h2>
+      <p class="meta">posts/openai-agents-handoffs.md, published 2026-09-08</p>
+      <div class="scroll"><table>
+        <thead><tr><th>Tool</th><th>Where</th><th>Post says</th><th>Latest</th><th>Status</th></tr></thead>
+        <tbody>
+      <tr class="s-fresh">
+        <td class="tool">OpenAI Agents SDK (Python)<code>openai-agents</code></td>
+        <td class="where">Frontmatter</td>
+        <td class="ver"><code>0.22.2</code></td>
+        <td class="ver"><code>0.22.2</code></td>
+        <td class="status"><strong>Current</strong><span>Only patch releases since.</span></td>
+      </tr>
+      <tr class="s-fresh">
+        <td class="tool">OpenAI Agents SDK (TS)<code>@openai/agents</code></td>
+        <td class="where">Frontmatter</td>
+        <td class="ver"><code>0.18.0</code></td>
+        <td class="ver"><code>0.18.0</code></td>
+        <td class="status"><strong>Current</strong><span>Only patch releases since.</span></td>
+      </tr>
+      <tr class="s-fresh">
+        <td class="tool">OpenAI Agents SDK (Python)<code>openai-agents</code></td>
+        <td class="where">Install command, line 10</td>
+        <td class="ver"><code>0.22.2</code></td>
+        <td class="ver"><code>0.22.2</code></td>
+        <td class="status"><strong>Current</strong><span>Only patch releases since.</span></td>
+      </tr>
+      <tr class="s-fresh">
+        <td class="tool">OpenAI Agents SDK (TS)<code>@openai/agents</code></td>
+        <td class="where">Install command, line 11</td>
+        <td class="ver"><code>0.18.0</code></td>
+        <td class="ver"><code>0.18.0</code></td>
+        <td class="status"><strong>Current</strong><span>Only patch releases since.</span></td>
+      </tr></tbody></table></div>
+    </section>
+  <footer>
+    Stale means a breaking release since the claim: a major bump, or a minor bump for 0.x packages, since semver allows breaking changes there.
+    Tools without a public registry, such as Cursor, are listed but not guessed.
+    Raw data: <a href="report.json">report.json</a>.
+  </footer>
+</main>
+</body>
+</html>

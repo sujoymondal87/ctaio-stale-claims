@@ -1,0 +1,174 @@
+{
+  "generatedAt": "2026-09-15T11:10:38.144Z",
+  "totals": {
+    "stale": 3,
+    "ahead": 0,
+    "drifting": 1,
+    "unknown": 0,
+    "unverifiable": 1,
+    "fresh": 8
+  },
+  "posts": [
+    {
+      "file": "aider-vs-claude-code-legacy-php.md",
+      "title": "Aider vs Claude Code on a 10-year-old PHP codebase",
+      "published": "2026-08-20",
+      "claims": [
+        {
+          "toolId": "aider",
+          "declared": "0.84.0",
+          "where": "line 13",
+          "tool": "Aider",
+          "package": "aider-chat",
+          "registry": "pypi",
+          "latest": "0.86.2",
+          "status": "stale",
+          "note": "Contradicts the post's frontmatter (0.86.1)."
+        },
+        {
+          "toolId": "cursor",
+          "declared": "1.7",
+          "where": "tested_with",
+          "tool": "Cursor",
+          "status": "unverifiable",
+          "note": "No public release registry. Check the Cursor changelog by hand."
+        },
+        {
+          "toolId": "aider",
+          "declared": "0.86.1",
+          "where": "tested_with",
+          "tool": "Aider",
+          "package": "aider-chat",
+          "registry": "pypi",
+          "latest": "0.86.2",
+          "status": "fresh"
+        },
+        {
+          "toolId": "claude-code",
+          "declared": "2.1.200",
+          "where": "tested_with",
+          "tool": "Claude Code",
+          "package": "@anthropic-ai/claude-code",
+          "registry": "npm",
+          "latest": "2.1.272",
+          "status": "fresh"
+        }
+      ],
+      "worst": "stale"
+    },
+    {
+      "file": "parallel-sessions-worktrees.md",
+      "title": "Running parallel Claude Code sessions with git worktrees",
+      "published": "2026-02-11",
+      "claims": [
+        {
+          "toolId": "claude-code",
+          "declared": "1.0.88",
+          "where": "tested_with",
+          "tool": "Claude Code",
+          "package": "@anthropic-ai/claude-code",
+          "registry": "npm",
+          "latest": "2.1.272",
+          "status": "stale"
+        },
+        {
+          "toolId": "claude-code",
+          "declared": "1.0.88",
+          "where": "line 11",
+          "tool": "Claude Code",
+          "package": "@anthropic-ai/claude-code",
+          "registry": "npm",
+          "latest": "2.1.272",
+          "status": "stale"
+        }
+      ],
+      "worst": "stale"
+    },
+    {
+      "file": "review-bot-agent-sdk.md",
+      "title": "A PR review bot on the Claude Agent SDK in 200 lines",
+      "published": "2026-06-02",
+      "claims": [
+        {
+          "toolId": "anthropic-py",
+          "declared": "1.2.0",
+          "where": "tested_with",
+          "tool": "Anthropic SDK (Python)",
+          "package": "anthropic",
+          "registry": "pypi",
+          "latest": "1.5.0",
+          "status": "drifting"
+        },
+        {
+          "toolId": "claude-agent-sdk-py",
+          "declared": "0.2.140",
+          "where": "tested_with",
+          "tool": "Claude Agent SDK (Python)",
+          "package": "claude-agent-sdk",
+          "registry": "pypi",
+          "latest": "0.2.152",
+          "status": "fresh"
+        },
+        {
+          "toolId": "claude-agent-sdk-py",
+          "declared": "0.2.140",
+          "where": "line 10",
+          "tool": "Claude Agent SDK (Python)",
+          "package": "claude-agent-sdk",
+          "registry": "pypi",
+          "latest": "0.2.152",
+          "status": "fresh"
+        }
+      ],
+      "worst": "drifting"
+    },
+    {
+      "file": "openai-agents-handoffs.md",
+      "title": "Agent handoffs in the OpenAI Agents SDK, tested in Python and TS",
+      "published": "2026-09-08",
+      "claims": [
+        {
+          "toolId": "openai-agents-py",
+          "declared": "0.22.2",
+          "where": "tested_with",
+          "tool": "OpenAI Agents SDK (Python)",
+          "package": "openai-agents",
+          "registry": "pypi",
+          "latest": "0.22.2",
+          "status": "fresh"
+        },
+        {
+          "toolId": "openai-agents-ts",
+          "declared": "0.18.0",
+          "where": "tested_with",
+          "tool": "OpenAI Agents SDK (TS)",
+          "package": "@openai/agents",
+          "registry": "npm",
+          "latest": "0.18.0",
+          "status": "fresh"
+        },
+        {
+          "toolId": "openai-agents-py",
+          "declared": "0.22.2",
+          "where": "line 10",
+          "tool": "OpenAI Agents SDK (Python)",
+          "package": "openai-agents",
+          "registry": "pypi",
+          "latest": "0.22.2",
+          "status": "fresh"
+        },
+        {
+          "toolId": "openai-agents-ts",
+          "declared": "0.18.0",
+          "where": "line 11",
+          "tool": "OpenAI Agents SDK (TS)",
+          "package": "@openai/agents",
+          "registry": "npm",
+          "latest": "0.18.0",
+          "status": "fresh"
+        }
+      ],
+      "worst": "fresh"
+    }
+  ]
+}

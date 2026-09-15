@@ -1,0 +1,11 @@
+{
+  "claude-code":         { "name": "Claude Code",              "registry": "npm",  "package": "@anthropic-ai/claude-code" },
+  "claude-agent-sdk-ts": { "name": "Claude Agent SDK (TS)",    "registry": "npm",  "package": "@anthropic-ai/claude-agent-sdk" },
+  "claude-agent-sdk-py": { "name": "Claude Agent SDK (Python)","registry": "pypi", "package": "claude-agent-sdk" },
+  "anthropic-ts":        { "name": "Anthropic SDK (TS)",       "registry": "npm",  "package": "@anthropic-ai/sdk" },
+  "anthropic-py":        { "name": "Anthropic SDK (Python)",   "registry": "pypi", "package": "anthropic" },
+  "aider":               { "name": "Aider",                    "registry": "pypi", "package": "aider-chat" },
+  "openai-agents-ts":    { "name": "OpenAI Agents SDK (TS)",   "registry": "npm",  "package": "@openai/agents" },
+  "openai-agents-py":    { "name": "OpenAI Agents SDK (Python)","registry": "pypi","package": "openai-agents" },
+  "cursor":              { "name": "Cursor",                   "registry": null,   "note": "No public release registry. Check the Cursor changelog by hand." }
+}
